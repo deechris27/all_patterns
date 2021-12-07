@@ -2,7 +2,7 @@
   "name": "all-patterns",
   "version": "1.0.0",
   "description": "module that has all pattern programs",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
