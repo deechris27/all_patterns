@@ -2,9 +2,83 @@
   "name": "all-patterns",
   "version": "1.0.0",
   "description": "module that has all pattern programs",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rimraf dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
+    "build:umd:min": "webpack --mode production --output-filename index.umd.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html mocha --require @babel/register",
+    "test:watch": "mocha --watch",
+    "validate": "npm-run-all --parallel build",
+    "coverage-report": "cat ./coverage | codecov"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "branches": 50,
+    "functions": 0,
+    "lines": 50,
+    "statements": 50
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Deepak <deechris27@gmail.com> (http://tidbit.c.la/)",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "7.10.0",
+    "@babel/core": "7.10.0",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.10.0",
+    "@babel/preset-env": "*",
+    "@babel/runtime": "7.10.0",
+    "babel-loader": "8.1.0",
+    "babel-plugin-istanbul": "6.0.0",
+    "json-loader": "0.5.7",
+    "unique-random-array": "2.0.0",
+    "webpack": "4.43.0"
+  },
+  "instrument": false,
+  "sourceMap": false,
+  "include": [
+    "src"
+  ],
+  "devDependencies": {
+    "@babel/register": "7.9.0",
+    "chai": "4.2.0",
+    "codecov": "3.7.1",
+    "cross-env": "7.0.2",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "ghooks": "2.0.4",
+    "mocha": "7.2.0",
+    "npm-run-all": "4.1.5",
+    "nyc": "15.0.1",
+    "rimraf": "3.0.2",
+    "webpack-cli": "3.3.11"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/preset-env"
+        ],
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run validate"
+    }
   },
   "repository": {
     "type": "git",
@@ -16,8 +90,6 @@
     "star",
     "patterns"
   ],
-  "author": "Deepak D",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/deechris27/all_patterns/issues"
   },
