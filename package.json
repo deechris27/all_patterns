@@ -1,0 +1,25 @@
+{
+  "name": "all-patterns",
+  "version": "1.0.0",
+  "description": "module that has all pattern programs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deechris27/all_patterns.git"
+  },
+  "keywords": [
+    "pattern",
+    "programs",
+    "star",
+    "patterns"
+  ],
+  "author": "Deepak D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deechris27/all_patterns/issues"
+  },
+  "homepage": "https://github.com/deechris27/all_patterns#readme"
+}
