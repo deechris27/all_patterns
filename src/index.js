@@ -139,9 +139,6 @@ const trianglePatternFive = () => {
     }
   }
 
-  trianglePatternFive();
-
-
 
 const mainExport = {
    squarePattern: square
