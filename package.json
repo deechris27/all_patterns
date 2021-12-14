@@ -1,6 +1,6 @@
 {
   "name": "all-patterns",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "module that has all pattern programs",
   "main": "dist/index.js",
   "scripts": {
